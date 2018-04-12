@@ -17,10 +17,35 @@ namespace HelloCSharp
             InitializeComponent();
         }
 
-        private void fruitRadio_CheckedChanged(object sender, EventArgs e)
+        private void removeButton_Click(object sender, EventArgs e)
         {
-            RadioButton r = sender as RadioButton;
-            displayLabel.Text = "Selected : " + r.Text;
+            int index = listBox.SelectedIndex;
+            if (index < 0) {
+                return;
+            }
+            listBox.Items.RemoveAt(index);
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            string text = textBox.Text;
+            if (text == "")
+            {
+                return;
+            }
+            listBox.Items.Add(text);
+        }
+
+        private void textBox_TextChanged(object sender, EventArgs e)
+        {
+            bool enablesButton = textBox.Text != "";
+            addButton.Enabled = enablesButton;
+        }
+
+        private void listBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            bool enablesButton = listBox.SelectedIndex >= 0;
+            removeButton.Enabled = enablesButton;
         }
     }
 }
