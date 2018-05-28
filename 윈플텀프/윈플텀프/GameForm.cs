@@ -19,10 +19,9 @@ namespace 윈플텀프
         Player player;
         Bitmap bgImage;
         Missile Missile;
-        //GameObject[] blueMissile = new GameObject[30];
         private void GameForm_Load(object sender, EventArgs e)
         {
-            this.ClientSize = new Size(810, 610);
+            this.ClientSize = new Size(1020, 610);
             bgImage = 윈플텀프.Properties.Resources.BackGround;
             player = new Player();
             Missile = new Missile();
@@ -34,7 +33,7 @@ namespace 윈플텀프
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(bgImage, 0, 0, 810, 610);
+            e.Graphics.DrawImage(bgImage, 0, 0, 1050, 610);
             Missile.draw(e.Graphics);
             player.draw(e.Graphics);
         }

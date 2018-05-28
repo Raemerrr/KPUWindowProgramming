@@ -83,34 +83,8 @@ namespace 윈플텀프
 
         private void appendObject()
         {
-            /*
-            GameObject obj;
-            float x;
-            int randomNum = new Random().Next(3);
-            if (randomNum == 0)
-            {
-                obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
-                obj.tag = TAG_RED;
-                x = CROC_Y;
-            }
-            else if (randomNum == 1)
-            {
-                obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
-                obj.tag = TAG_BLUE;
-                x = COIN_Y;
-            }
-            else
-            {
-                obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
-                obj.tag = TAG_BLUE;
-                x = CROC_Y + 30;
-            }
-            obj.setPosition(x, y);
-            objects.Add(obj);
-            */
-
             int randomNum = new Random().Next(10);
-            for (int i = 0; i < missileList[randomNum].Count; i+= 3)
+            for (int i = 0; i < missileList[randomNum].Count - 3; i += 3) 
             {
                 GameObject obj;
                 if (missileList[randomNum][i + 2] == "0")
