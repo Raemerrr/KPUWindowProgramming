@@ -18,12 +18,12 @@ namespace 윈플텀프
         }
         Player player;
         Bitmap bgImage;
-        Missile Missile;
+        Missile missile;
         private void GameForm_Load(object sender, EventArgs e)
         {
             this.ClientSize = new Size(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
             bgImage = 윈플텀프.Properties.Resources.BackGround;
-            Missile = new Missile();
+            missile = new Missile();
             player = new Player();
             previousTime = DateTime.Now;
 
@@ -34,7 +34,7 @@ namespace 윈플텀프
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(bgImage, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-            Missile.draw(e.Graphics);
+            missile.draw(e.Graphics);
             player.draw(e.Graphics);
         }
 
@@ -50,9 +50,9 @@ namespace 윈플텀프
             {
                 return;
             }
-            Missile.update(msec);
+            missile.update(msec);
             player.updateFrame(msec);
-            int tag = Missile.checkCollision(player);
+            int tag = missile.checkCollision(player);
             if (tag == Constants.TAG_BLUE)
             {
                 //active = false;
