@@ -3,14 +3,14 @@
     partial class GameForm
     {
         /// <summary>
-        /// 필수 디자이너 변수입니다.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// 사용 중인 모든 리소스를 정리합니다.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,64 +20,43 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form 디자이너에서 생성한 코드
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// 디자이너 지원에 필요한 메서드입니다. 
-        /// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.startButton = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // titleLabel
+            // timer
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("양재소슬체S", 30F);
-            this.titleLabel.ForeColor = System.Drawing.Color.Snow;
-            this.titleLabel.Location = new System.Drawing.Point(154, 126);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(319, 50);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "SPACE FLIGHT";
-            // 
-            // startButton
-            // 
-            this.startButton.BackColor = System.Drawing.Color.Transparent;
-            this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.startButton.Font = new System.Drawing.Font("양재소슬체S", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.startButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.startButton.Location = new System.Drawing.Point(178, 507);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(230, 70);
-            this.startButton.TabIndex = 1;
-            this.startButton.Text = "START";
-            this.startButton.UseVisualStyleBackColor = false;
-            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            this.timer.Enabled = true;
+            this.timer.Interval = 30;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlText;
-            this.BackgroundImage = global::윈플텀프.Properties.Resources.BackGround;
-            this.ClientSize = new System.Drawing.Size(600, 800);
-            this.Controls.Add(this.startButton);
-            this.Controls.Add(this.titleLabel);
+            this.ClientSize = new System.Drawing.Size(992, 763);
+            this.DoubleBuffered = true;
             this.Name = "GameForm";
-            this.Text = "SPACE FLIGHT";
+            this.Text = "GameForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameForm_FormClosing);
+            this.Load += new System.EventHandler(this.GameForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyUp);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Timer timer;
     }
 }
-

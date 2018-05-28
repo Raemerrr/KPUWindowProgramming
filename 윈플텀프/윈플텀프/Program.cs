@@ -16,7 +16,7 @@ namespace 윈플텀프
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameForm());
+            Application.Run(new MainForm());
         }
     }
 }
