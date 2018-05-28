@@ -43,17 +43,11 @@ namespace 윈플텀프
 
         public void update(int msec)
         {
-            while (objects.Count > 0)
-            {
-                GameObject first = objects[0];
-                var bounds = first.bounds;
-                if (bounds.Bottom > 610)
-                {
-                    objects.RemoveAt(0);
-                }
-                else
-                {
-                    break;
+            for (int i = objects.Count - 1; i >= 0; i--) {
+                GameObject o = objects[i];
+                var bounds = o.bounds;
+                if (bounds.Bottom > 610) {
+                    objects.RemoveAt(i);
                 }
             }
 
