@@ -10,9 +10,8 @@ namespace 윈플텀프
 {
     class Missile
     {
+        public Missile() { InitMissle(); }
         List<List<string>> missileList = new List<List<string>>();
-
-
         const int BOX_Y = 440;
         const int CROC_Y = 400;
         const int COIN_Y = 400;
@@ -31,7 +30,7 @@ namespace 윈플텀프
                 List<string> ls = new List<string>();
                 string fileName = "Pattern";
                 fileName += q + ".txt";
-                StreamReader sr = new StreamReader(@"D:\1.산기대\4-1학기\윈플\텀프준비\csharpConsole\csharpConsole\Resources\Pattern\" + fileName);
+                StreamReader sr = new StreamReader(@"D:\SorceTree\윈도우즈프로그래밍\윈플텀프\윈플텀프\Resources\Pattern\" + fileName);
                 while (sr.Peek() > -1)
                 {
                     string inputWord = sr.ReadLine();
@@ -69,10 +68,11 @@ namespace 윈플텀프
                 y = bounds.Bottom - obj.sizeDiff;
             }
 
-            if (y < 610)
+            if (objects.Count <= 0)
             {
-                appendObject(y);
+                appendObject();
             }
+
             int dy = speed * msec / 1000;
             foreach (var obj in objects)
             {
@@ -81,7 +81,7 @@ namespace 윈플텀프
             }
         }
 
-        private void appendObject(float y)
+        private void appendObject()
         {
             /*
             GameObject obj;
@@ -108,29 +108,29 @@ namespace 윈플텀프
             obj.setPosition(x, y);
             objects.Add(obj);
             */
-            GameObject obj;
-            float x;
-            int randomNum = new Random().Next(3);
-            if (randomNum == 0)
+
+            int randomNum = new Random().Next(10);
+            for (int i = 0; i < missileList[randomNum].Count; i+= 3)
             {
-                obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
-                obj.tag = TAG_RED;
-                x = CROC_Y;
+                GameObject obj;
+                if (missileList[randomNum][i + 2] == "0")
+                {
+                    obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
+                    obj.tag = TAG_RED;
+                }
+                else if (missileList[randomNum][i + 2] == "1")
+                {
+                    obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
+                    obj.tag = TAG_BLUE;
+                }
+                else
+                {
+                    obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
+                    obj.tag = TAG_GREEN;
+                }
+                obj.setPosition(float.Parse(missileList[randomNum][i]), float.Parse(missileList[randomNum][i + 1]));
+                objects.Add(obj);
             }
-            else if (randomNum == 1)
-            {
-                obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
-                obj.tag = TAG_BLUE;
-                x = COIN_Y;
-            }
-            else
-            {
-                obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
-                obj.tag = TAG_BLUE;
-                x = CROC_Y + 30;
-            }
-            obj.setPosition(x, y);
-            objects.Add(obj);
         }
 
         public int checkCollision(Player player)

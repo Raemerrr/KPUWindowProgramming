@@ -18,21 +18,16 @@ namespace 윈플텀프
         }
         Player player;
         Bitmap bgImage;
-        Missile Missile = new Missile();
+        Missile Missile;
         //GameObject[] blueMissile = new GameObject[30];
         private void GameForm_Load(object sender, EventArgs e)
         {
             this.ClientSize = new Size(810, 610);
             bgImage = 윈플텀프.Properties.Resources.BackGround;
             player = new Player();
+            Missile = new Missile();
             previousTime = DateTime.Now;
-            //for (int i = 0; i < 30; i++)
-            //{
-            //    blueMissile[i] = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 3.0f);
-            //    blueMissile[i].setPosition(i*10,i*10);
-            //}
-            //blueMissile = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 3.0f);
-            //blueMissile.setPosition(100,100);
+
             active = true;
             player.isMoving = true;
         }
@@ -40,11 +35,6 @@ namespace 윈플텀프
         private void GameForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(bgImage, 0, 0, 810, 610);
-            //blueMissile.draw(e.Graphics);
-            //for (int i = 0; i < 30; i++)
-            //{
-            //    blueMissile[i].draw(e.Graphics);
-            //}
             Missile.draw(e.Graphics);
             player.draw(e.Graphics);
         }

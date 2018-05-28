@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnimObject.Class1.cs" />
+    <Compile Include="AnimObject.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -19,7 +19,7 @@ namespace 윈플텀프
 
         public bool isMoving = false;
 
-        public Player() : base(윈플텀프.Properties.Resources.Player, 3, 4.0f)
+        public Player() : base(윈플텀프.Properties.Resources.Player, 3, 0.0f)
         {
             setPosition(INIT_X, INIT_Y);
         }
