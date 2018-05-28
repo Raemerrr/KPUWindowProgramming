@@ -10,18 +10,13 @@ namespace 윈플텀프
 {
     class Player : AnimObject
     {
-        enum Direction { Right, Left, Up, Down, Right_Up, Right_Down, Left_Up, Left_Down, NONE };
-        private const int INIT_X = 30;
-        private const int INIT_Y = 250;
-        private const int MOVE_SPEED = 10;
+        enum Direction { Right, Left, Up, Down, NONE };
         bool[] inputCheck = new bool[4] { false, false, false, false };
-        private const int GRAVITY = 1600;
-
         public bool isMoving = false;
 
         public Player() : base(윈플텀프.Properties.Resources.Player, 3, 0.0f)
         {
-            setPosition(INIT_X, INIT_Y);
+            setPosition(Constants.PLAYER_INIT_X, Constants.PLAYER_INIT_Y);
         }
 
         public override RectangleF collisionBounds
@@ -29,7 +24,6 @@ namespace 윈플텀프
             get
             {
                 RectangleF rect = this.rect;
-                rect.Inflate(-50, -10);
                 return rect;
             }
         }
@@ -82,6 +76,23 @@ namespace 윈플텀프
             {
                 inputCheck[Convert.ToInt32(Direction.Down)] = true;
             }
+
+            if (keyCode.KeyCode == Keys.Q)
+            {
+                // frameCount = 0;
+                index = 0;
+            }
+            if (keyCode.KeyCode == Keys.W)
+            {
+                index = 1;
+                //frameCount = 1;
+            }
+            if (keyCode.KeyCode == Keys.E)
+            {
+                //frameCount = 2;
+                index = 2;
+            }
+
             else
             {
                 //아무 작업을 하지 않기위해.
@@ -94,31 +105,31 @@ namespace 윈플텀프
             if (inputCheck[Convert.ToInt32(Direction.Right)])
             {
                 //화면크기 
-                if (rect.X < (1010 - MOVE_SPEED - rect.Width))
+                if (rect.X < (Constants.SCREEN_WIDTH - 10 - Constants.PLAYER_SPEED - rect.Width))
                 {
-                    move(MOVE_SPEED, 0);
+                    move(Constants.PLAYER_SPEED, 0);
                 }
             }
             if (inputCheck[Convert.ToInt32(Direction.Left)])
             {
-                if (rect.X > (0 + MOVE_SPEED))
+                if (rect.X > (0 + Constants.PLAYER_SPEED))
                 {
-                    move(-MOVE_SPEED, 0);
+                    move(-Constants.PLAYER_SPEED, 0);
                 }
             }
             if (inputCheck[Convert.ToInt32(Direction.Up)])
             {
-                if (rect.Y > (0 + MOVE_SPEED))
+                if (rect.Y > (0 + Constants.PLAYER_SPEED))
                 {
-                    move(0, -MOVE_SPEED);
+                    move(0, -Constants.PLAYER_SPEED);
                 }
             }
             if (inputCheck[Convert.ToInt32(Direction.Down)])
             {
                 //화면크기 
-                if (rect.Y < (610 - MOVE_SPEED - rect.Height))
+                if (rect.Y < (Constants.SCREEN_HEIGHT - Constants.PLAYER_SPEED - rect.Height))
                 {
-                    move(0, MOVE_SPEED);
+                    move(0, Constants.PLAYER_SPEED);
                 }
             }
         }

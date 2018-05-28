@@ -12,12 +12,16 @@ namespace 윈플텀프
     {
         protected Bitmap bitmap;
         protected RectangleF rect;
+        public int tag = 0;
+        public float sizeDiff = 0.0f;
+
         public GameObject(Bitmap bitmap)
         {
             this.bitmap = bitmap;
             Size size = bitmap.Size;
             rect = new RectangleF(0, 0, size.Width, size.Height);
         }
+
         public RectangleF bounds
         {
             get
@@ -25,6 +29,7 @@ namespace 윈플텀프
                 return rect;
             }
         }
+
         public virtual RectangleF collisionBounds
         {
             get
@@ -32,17 +37,17 @@ namespace 윈플텀프
                 return rect;
             }
         }
-        public float sizeDiff = 0.0f;
+
         public void setPosition(float x, float y)
         {
             rect.X = x;
             rect.Y = y;
         }
+
         public RectangleF getPosition()
         {
             return rect;
         }
-        public int tag = 0;
 
         public virtual void draw(Graphics g)
         {
@@ -62,7 +67,6 @@ namespace 윈플텀프
 
         public virtual void handleKeyDownEvent(Keys keyCode) { }
         public virtual void handleKeyUpEvent(Keys keyCode) { }
-
         public virtual void updateFrame(int msec) { }
     }
 }

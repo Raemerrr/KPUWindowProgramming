@@ -53,7 +53,7 @@ namespace 윈플텀프
             Missile.update(msec);
             player.updateFrame(msec);
             int tag = Missile.checkCollision(player);
-            if (tag == Missile.TAG_BLUE)
+            if (tag == Constants.TAG_BLUE)
             {
                 //active = false;
             }

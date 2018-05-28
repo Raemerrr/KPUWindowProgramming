@@ -8,23 +8,15 @@ using System.Threading.Tasks;
 
 namespace 윈플텀프
 {
-    class Missile
+    class Missile 
     {
-        public Missile() { InitMissle(); }
         List<List<string>> missileList = new List<List<string>>();
-        const int BOX_Y = 440;
-        const int CROC_Y = 400;
-        const int COIN_Y = 400;
-        const int speed = 220;
-
-        public const int TAG_NOTHING = -1;
-        public const int TAG_RED = 0;
-        public const int TAG_BLUE = 1;
-        public const int TAG_GREEN = 2;
-        public const int TAG_HP = 3;
-        public const int TAG_CLEAR = 4;
-
         List<GameObject> objects = new List<GameObject>();
+
+        public Missile()
+        {
+            InitMissle();
+        }
 
         private void InitMissle() {
             for (int q = 0; q < 10; q++)
@@ -78,7 +70,7 @@ namespace 윈플텀프
             //    }
             //}
 
-            int dy = speed * msec / 1000;
+            int dy = Constants.MISSILE_SPEED * msec / 1000;
             foreach (var obj in objects)
             {
                 obj.move(0, dy);
@@ -88,34 +80,34 @@ namespace 윈플텀프
 
         private void appendObject()
         {
-            int randomNum = new Random().Next(10);
+            int randomNum = new Random().Next(Constants.MAX_PATTERN);
             for (int i = 0; i < missileList[randomNum].Count - 3; i += 3) 
             {
                 GameObject obj;
-                if (missileList[randomNum][i + 2] == "0")
+                if (missileList[randomNum][i + 2] == Constants.TAG_RED.ToString())
                 {
                     obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
-                    obj.tag = TAG_RED;
+                    obj.tag = Constants.TAG_RED;
                 }
-                else if (missileList[randomNum][i + 2] == "1")
+                else if (missileList[randomNum][i + 2] == Constants.TAG_BLUE.ToString())
                 {
                     obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
-                    obj.tag = TAG_BLUE;
+                    obj.tag = Constants.TAG_BLUE;
                 }
-                else if (missileList[randomNum][i + 2] == "2")
+                else if (missileList[randomNum][i + 2] == Constants.TAG_GREEN.ToString())
                 {
                     obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
-                    obj.tag = TAG_GREEN;
+                    obj.tag = Constants.TAG_GREEN;
                 }
-                else if (missileList[randomNum][i + 2] == "3")
+                else if (missileList[randomNum][i + 2] == Constants.TAG_HP.ToString())
                 {
-                    obj = new AnimObject(윈플텀프.Properties.Resources.cHpObject, 1, 0.0f);
-                    obj.tag = TAG_HP;
+                    obj = new GameObject(윈플텀프.Properties.Resources.cHpObject);
+                    obj.tag = Constants.TAG_HP;
                 }
                 else
                 {
-                    obj = new AnimObject(윈플텀프.Properties.Resources.cClearObject, 1, 0.0f);
-                    obj.tag = TAG_CLEAR;
+                    obj = new GameObject(윈플텀프.Properties.Resources.cClearObject);
+                    obj.tag = Constants.TAG_CLEAR;
                 }
                 obj.setPosition(float.Parse(missileList[randomNum][i]), float.Parse(missileList[randomNum][i + 1]));
                 objects.Add(obj);
@@ -127,31 +119,31 @@ namespace 윈플텀프
             //GameObject removedCoin = null;
             foreach (GameObject obj in objects)
             {
-                if (obj.tag == TAG_RED)
+                if (obj.tag == Constants.TAG_RED)
                 {
                     if (obj.collides(player))
                     {
                         //removedCoin = obj;
                         objects.Remove(obj);
-                        return TAG_RED;
+                        return Constants.TAG_RED;
                     }
                 }
-                else if (obj.tag == TAG_BLUE)
+                else if (obj.tag == Constants.TAG_BLUE)
                 {
                     if (obj.collides(player))
                     {
-                        return TAG_BLUE;
+                        return Constants.TAG_BLUE;
                     }
                 }
                 else
                 {
                     if (obj.collides(player))
                     {
-                        return TAG_GREEN;
+                        return Constants.TAG_GREEN;
                     }
                 }
             }
-            return TAG_NOTHING;
+            return Constants.TAG_NOTHING;
             //if (removedCoin != null) {
             //    //playSOUnd();
             //}
