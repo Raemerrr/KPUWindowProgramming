@@ -13,7 +13,7 @@ namespace 윈플텀프
         enum Direction { Right, Left, Up, Down, NONE };
         bool[] inputCheck = new bool[4] { false, false, false, false };
         public bool isMoving = false;
-
+        bool temp = false;
         public Player() : base(윈플텀프.Properties.Resources.Player, 3, 0.0f)
         {
             setPosition(Constants.PLAYER_INIT_X, Constants.PLAYER_INIT_Y);
