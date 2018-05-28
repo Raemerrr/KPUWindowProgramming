@@ -134,6 +134,7 @@ namespace 윈플텀프
                 {
                     if (obj.collides(player))
                     {
+                        objects.Remove(obj);
                         return Constants.TAG_BLUE;
                     }
                 }
