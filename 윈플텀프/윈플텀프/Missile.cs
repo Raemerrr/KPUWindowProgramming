@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace 윈플텀프
 {
@@ -19,23 +20,24 @@ namespace 윈플텀프
         }
 
         private void InitMissle() {
-            for (int q = 0; q < 10; q++)
-            {
-                List<string> ls = new List<string>();
-                string fileName = "Pattern";
-                fileName += q + ".txt";
-                StreamReader sr = new StreamReader(@"D:\SorceTree\윈도우즈프로그래밍\윈플텀프\윈플텀프\Resources\Pattern\" + fileName);
-                while (sr.Peek() > -1)
-                {
-                    string inputWord = sr.ReadLine();
-                    string[] temp = inputWord.Split('\t');
-                    foreach (var item in temp)
-                    {
-                        ls.Add(item);
+            try {
+                for (int q = 0; q < 10; q++) {
+                    List<string> ls = new List<string>();
+                    string fileName = "Pattern";
+                    fileName += q + ".txt";
+                    StreamReader sr = new StreamReader("./Resources/Pattern/" + fileName);
+                    while (sr.Peek() > -1) {
+                        string inputWord = sr.ReadLine();
+                        string[] temp = inputWord.Split('\t');
+                        foreach (var item in temp) {
+                            ls.Add(item);
+                        }
                     }
+                    missileList.Add(ls);
+                    sr.Close();
                 }
-                missileList.Add(ls);
-                sr.Close();
+            } catch (Exception e) {
+                MessageBox.Show(e.Message, "Error");
             }
         }
 
