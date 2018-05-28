@@ -38,7 +38,8 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("양재소슬체S", 30F);
             this.titleLabel.ForeColor = System.Drawing.Color.Snow;
-            this.titleLabel.Location = new System.Drawing.Point(332, 92);
+            //this.titleLabel.Location = new System.Drawing.Point((Constants.SCREEN_WIDTH/2)-100, 100);
+            this.titleLabel.Location = new System.Drawing.Point(410, 100);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(319, 50);
             this.titleLabel.TabIndex = 0;
@@ -50,7 +51,8 @@
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.startButton.Font = new System.Drawing.Font("양재소슬체S", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.startButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.startButton.Location = new System.Drawing.Point(360, 567);
+            //this.startButton.Location = new System.Drawing.Point((Constants.SCREEN_WIDTH / 2)-75, 550);
+            this.startButton.Location = new System.Drawing.Point(435, 550);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(230, 70);
             this.startButton.TabIndex = 1;

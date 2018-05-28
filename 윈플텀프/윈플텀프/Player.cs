@@ -94,7 +94,7 @@ namespace 윈플텀프
             if (inputCheck[Convert.ToInt32(Direction.Right)])
             {
                 //화면크기 
-                if (rect.X < (810 - MOVE_SPEED - rect.Width))
+                if (rect.X < (1010 - MOVE_SPEED - rect.Width))
                 {
                     move(MOVE_SPEED, 0);
                 }

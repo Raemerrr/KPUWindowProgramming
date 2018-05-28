@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimObject.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
