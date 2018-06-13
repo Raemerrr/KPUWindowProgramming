@@ -15,9 +15,13 @@ namespace 윈플텀프
         Bitmap bgImage;
         Missile missile;
         List<GameObject> hpMarkList = new List<GameObject>();
+
         public static int score;
-        public static int playerIndex;
-        public static string recordName = "임시용- ";
+        public static int playerRankIndex;
+        public static int gameRound;
+        public static string recordName;
+        public static bool winCheck;
+
         private void GameForm_Load(object sender, EventArgs e)
         {
             this.ClientSize = new Size(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
@@ -35,7 +39,12 @@ namespace 윈플텀프
             active = true;
             player.isMoving = true;
             timer.Enabled = true;
+
             score = 0;
+            playerRankIndex = 0;
+            gameRound = 0;
+            recordName = string.Empty;
+            winCheck = false;
         }
 
         private void GameForm_Paint(object sender, PaintEventArgs e)
@@ -55,7 +64,8 @@ namespace 윈플텀프
         private void timer_Tick(object sender, EventArgs e)
         {
             score++;
-            timeLabel.Text = "SCORE : " + score.ToString();
+            roundLabel.Text = "ROUND : " + gameRound.ToString();
+            scoreLabel.Text = "SCORE : " + score.ToString();
             var now = DateTime.Now;
             var elapsed = now - previousTime;
             previousTime = now;
@@ -69,7 +79,7 @@ namespace 윈플텀프
             int tag = missile.checkCollision(player);
             if (tag == player.playerColor)
             {
-                score += 20;
+                score += Constants.ADD_SCORE_NONE;
             }
             else if (tag == Constants.TAG_BLUE && player.playerColor != Constants.TAG_BLUE)
             {
@@ -94,39 +104,59 @@ namespace 윈플텀프
             }
             else if (tag == Constants.TAG_HP)
             {
-                if (hpMarkList.Count < 3)
+                score += Constants.ADD_SCORE_HP;
+                if (hpMarkList.Count < Constants.PLAYER_INIT_HP)
                 {
                     GameObject hpMark = new GameObject(윈플텀프.Properties.Resources.HpMark);
                     hpMark.setPosition(hpMarkList.Count * 55, 0);
                     hpMarkList.Add(hpMark);
                 }
             }
+            else if (tag == Constants.TAG_CLEAR)
+            {
+                //클리어 아이템은 라운드를 증가시키지 않음.
+                gameRound--;
+                score += Constants.ADD_SCORE_CLEAR;
+            }
             Invalidate();
+            //게임 완료 조건
+            if (gameRound >= Constants.MAX_GAME_ROUND)
+            {
+                winCheck = true;
+                GameFore_EndSet();
+            }
+            //게임 실패 조건
             if (hpMarkList.Count <= 0)
             {
-                timer.Enabled = false;
-                timer.Dispose();
-                for (int i = 0; i < MainForm.playerRecordScore.Count; i++)
-                {
-                    if (score > MainForm.playerRecordScore[i])
-                    {
-                        InputRecordForm inputForm = new InputRecordForm();
-                        inputForm.Show();
-                        playerIndex = i;
-                        recordFlag = true;
-                        return;
-                    }
-                }
-                if (!recordFlag)
+                winCheck = false;
+                GameFore_EndSet();
+            }
+        }
+        private void GameFore_EndSet()
+        {
+            timer.Enabled = false;
+            timer.Dispose();
+            for (int i = 0; i < MainForm.playerRecordScore.Count; i++)
+            {
+                if (score > MainForm.playerRecordScore[i])
                 {
                     this.Dispose();
                     this.Visible = false;
-                    LoseForm loseForm = new LoseForm();
-                    loseForm.Show();
+                    InputRecordForm inputForm = new InputRecordForm();
+                    inputForm.Show();
+                    playerRankIndex = i;
+                    recordFlag = true;
+                    return;
                 }
             }
+            if (!recordFlag)
+            {
+                this.Dispose();
+                this.Visible = false;
+                EndForm endForm = new EndForm();
+                endForm.Show();
+            }
         }
-
         private void GameForm_KeyUp(object sender, KeyEventArgs e)
         {
             player.handleKeyUpEvent(e);

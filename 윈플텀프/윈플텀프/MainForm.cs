@@ -18,13 +18,14 @@ namespace 윈플텀프
         public MainForm()
         {
             InitializeComponent();
+            playerRecord.Clear();
+            playerRecordScore.Clear();
             InitRecord();
         }
         private void InitRecord()
         {
             try
             {
-                
                 StreamReader sr = new StreamReader("./Resources/Record.txt");
                 while (sr.Peek() > -1)
                 {

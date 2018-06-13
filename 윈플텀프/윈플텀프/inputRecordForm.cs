@@ -17,7 +17,6 @@ namespace 윈플텀프
         {
             this.ClientSize = new Size(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/2);
             bgImage = 윈플텀프.Properties.Resources.BackGround;
-          
         }
 
         private void iputRecordForm_Paint(object sender, PaintEventArgs e)
@@ -35,9 +34,9 @@ namespace 윈플텀프
             GameForm.recordName = playerNameTextBox.Text;
             this.Visible = false;
             this.Dispose();
-            if (GameForm.playerIndex < 3)
+            if (GameForm.playerRankIndex < 3)
             {
-                MainForm.playerRecord.Insert(GameForm.playerIndex, (GameForm.recordName + "- " + GameForm.score.ToString()));
+                MainForm.playerRecord.Insert(GameForm.playerRankIndex, (GameForm.recordName + "- " + GameForm.score.ToString()));
                 MainForm.playerRecord.RemoveAt(MainForm.playerRecord.Count - 1);
             }
             try
@@ -54,7 +53,7 @@ namespace 윈플텀프
             {
                 MessageBox.Show(ex.Message, "Error");
             }
-            LoseForm loseForm = new LoseForm();
+            EndForm loseForm = new EndForm();
             loseForm.Show();
         }
     }

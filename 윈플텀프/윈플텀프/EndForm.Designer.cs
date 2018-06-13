@@ -1,6 +1,6 @@
 ﻿namespace 윈플텀프
 {
-    partial class LoseForm
+    partial class EndForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,9 +42,9 @@
             this.titleLabel.ForeColor = System.Drawing.Color.Snow;
             this.titleLabel.Location = new System.Drawing.Point(314, 83);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(315, 117);
+            this.titleLabel.Size = new System.Drawing.Size(433, 117);
             this.titleLabel.TabIndex = 1;
-            this.titleLabel.Text = "Lose!!";
+            this.titleLabel.Text = "EndForm";
             // 
             // mainButton
             // 
@@ -52,7 +52,7 @@
             this.mainButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.mainButton.Font = new System.Drawing.Font("양재튼튼체B", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.mainButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.mainButton.Location = new System.Drawing.Point(750, 569);
+            this.mainButton.Location = new System.Drawing.Point(626, 573);
             this.mainButton.Name = "mainButton";
             this.mainButton.Size = new System.Drawing.Size(230, 70);
             this.mainButton.TabIndex = 2;
@@ -66,7 +66,7 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitButton.Font = new System.Drawing.Font("양재튼튼체B", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.exitButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.exitButton.Location = new System.Drawing.Point(750, 645);
+            this.exitButton.Location = new System.Drawing.Point(626, 649);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(230, 70);
             this.exitButton.TabIndex = 3;
@@ -86,18 +86,20 @@
             this.rankLabel.TabIndex = 4;
             this.rankLabel.Text = "순위";
             // 
-            // LoseForm
+            // EndForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::윈플텀프.Properties.Resources.BackGround;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(992, 763);
             this.Controls.Add(this.rankLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.mainButton);
             this.Controls.Add(this.titleLabel);
-            this.Name = "LoseForm";
+            this.Name = "EndForm";
             this.Text = "LoseForm";
+            this.Load += new System.EventHandler(this.EndForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.EndForm_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
 

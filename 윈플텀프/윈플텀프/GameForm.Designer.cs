@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.timeLabel = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
+            this.roundLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer
@@ -38,24 +39,38 @@
             this.timer.Interval = 30;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // timeLabel
+            // scoreLabel
             // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.timeLabel.Font = new System.Drawing.Font("굴림", 20F);
-            this.timeLabel.ForeColor = System.Drawing.Color.Snow;
-            this.timeLabel.Location = new System.Drawing.Point(932, 9);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(35, 34);
-            this.timeLabel.TabIndex = 0;
-            this.timeLabel.Text = "0";
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.BackColor = System.Drawing.Color.Transparent;
+            this.scoreLabel.Font = new System.Drawing.Font("굴림", 20F);
+            this.scoreLabel.ForeColor = System.Drawing.Color.Snow;
+            this.scoreLabel.Location = new System.Drawing.Point(932, 9);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(107, 34);
+            this.scoreLabel.TabIndex = 0;
+            this.scoreLabel.Text = "Score";
+            // 
+            // roundLabel
+            // 
+            this.roundLabel.AutoSize = true;
+            this.roundLabel.BackColor = System.Drawing.Color.Transparent;
+            this.roundLabel.Font = new System.Drawing.Font("굴림", 20F);
+            this.roundLabel.ForeColor = System.Drawing.Color.Snow;
+            this.roundLabel.Location = new System.Drawing.Point(531, 9);
+            this.roundLabel.Name = "roundLabel";
+            this.roundLabel.Size = new System.Drawing.Size(119, 34);
+            this.roundLabel.TabIndex = 1;
+            this.roundLabel.Text = "Round";
             // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1230, 763);
-            this.Controls.Add(this.timeLabel);
+            this.Controls.Add(this.roundLabel);
+            this.Controls.Add(this.scoreLabel);
             this.DoubleBuffered = true;
             this.Name = "GameForm";
             this.Text = "GameForm";
@@ -72,6 +87,7 @@
         #endregion
 
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Label scoreLabel;
+        private System.Windows.Forms.Label roundLabel;
     }
 }
