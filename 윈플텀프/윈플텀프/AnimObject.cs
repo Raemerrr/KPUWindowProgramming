@@ -14,7 +14,7 @@ namespace 윈플텀프
         private float framesPerSecond;
         private int millisecondsElapsed;
         private RectangleF srcRect;
-
+        
         public int index
         {
             get { return frameIndex; }

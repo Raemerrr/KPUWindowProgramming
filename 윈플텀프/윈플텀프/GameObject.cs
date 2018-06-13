@@ -54,7 +54,7 @@ namespace 윈플텀프
             g.DrawImage(bitmap, rect);
         }
 
-        public void move(int dx, int dy)
+        public void move(float dx, float dy)
         {
             rect.X += dx;
             rect.Y += dy;

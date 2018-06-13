@@ -10,13 +10,23 @@ namespace 윈플텀프
 {
     class Player : AnimObject
     {
-        enum Direction { Right, Left, Up, Down, NONE };
+        enum Direction { Right, Left, Up, Down };
         bool[] inputCheck = new bool[4] { false, false, false, false };
         public bool isMoving = false;
-        bool temp = false;
+        int hp;
+        public int playerColor = 0;
+       
         public Player() : base(윈플텀프.Properties.Resources.Player, 3, 0.0f)
         {
+            hp = Constants.PLAYER_INIT_HP;
+            //hpMark = new GameObject(윈플텀프.Properties.Resources.HpMark);
             setPosition(Constants.PLAYER_INIT_X, Constants.PLAYER_INIT_Y);
+        }
+
+        public int playerHp
+        {
+            set { hp = value; }
+            get { return hp; }
         }
 
         public override RectangleF collisionBounds
@@ -27,10 +37,11 @@ namespace 윈플텀프
                 return rect;
             }
         }
-        
+
         public override void updateFrame(int msec)
         {
             base.updateFrame(msec);
+            beginChange();
         }
 
         public void handleKeyUpEvent(KeyEventArgs keyCode)
@@ -51,11 +62,6 @@ namespace 윈플텀프
             {
                 inputCheck[Convert.ToInt32(Direction.Down)] = false;
             }
-            else
-            {
-                //아무 작업을 하지 않기위해.
-            }
-            startMoving();
         }
 
         public void handleKeyDownEvent(KeyEventArgs keyCode)
@@ -77,31 +83,23 @@ namespace 윈플텀프
                 inputCheck[Convert.ToInt32(Direction.Down)] = true;
             }
 
+            //플레이어 색 입력
             if (keyCode.KeyCode == Keys.Q)
             {
-                // frameCount = 0;
-                index = 0;
-            }
-            if (keyCode.KeyCode == Keys.W)
+                playerColor = 0;
+            }else if (keyCode.KeyCode == Keys.W)
             {
-                index = 1;
-                //frameCount = 1;
-            }
-            if (keyCode.KeyCode == Keys.E)
+                playerColor = 1;
+            }else if (keyCode.KeyCode == Keys.E)
             {
-                //frameCount = 2;
-                index = 2;
+                playerColor = 2;
             }
-
-            else
-            {
-                //아무 작업을 하지 않기위해.
-            }
-            startMoving();
         }
 
-        private void startMoving()
+        private void beginChange()
         {
+            //AnimObject의 framesPerSecond 때문에 계속 0이 되기때문에 지속적으로 프레임마다 색 입력을 해줘야함
+            index = playerColor;
             if (inputCheck[Convert.ToInt32(Direction.Right)])
             {
                 //화면크기 

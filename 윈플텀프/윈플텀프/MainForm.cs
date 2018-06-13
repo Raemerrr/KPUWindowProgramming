@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,10 +13,34 @@ namespace 윈플텀프
 {
     public partial class MainForm : Form
     {
+        public static List<string> playerRecord = new List<string>();
+        public static List<int> playerRecordScore = new List<int>();
         public MainForm()
         {
             InitializeComponent();
+            InitRecord();
         }
+        private void InitRecord()
+        {
+            try
+            {
+                
+                StreamReader sr = new StreamReader("./Resources/Record.txt");
+                while (sr.Peek() > -1)
+                {
+                    string inputWord = sr.ReadLine();
+                    playerRecord.Add(inputWord);
+                    string[] temp = inputWord.Split(' ');
+                    playerRecordScore.Add(Int32.Parse(temp[1]));
+                }
+                sr.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error");
+            }
+        }
+
         Bitmap bgImage;
         private void startButton_Click(object sender, EventArgs e)
         {

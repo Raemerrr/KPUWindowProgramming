@@ -31,17 +31,18 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.mainButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.rankLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("양재소슬체S", 30F);
+            this.titleLabel.Font = new System.Drawing.Font("양재소슬체S", 70F);
             this.titleLabel.ForeColor = System.Drawing.Color.Snow;
-            this.titleLabel.Location = new System.Drawing.Point(390, 121);
+            this.titleLabel.Location = new System.Drawing.Point(314, 83);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(136, 50);
+            this.titleLabel.Size = new System.Drawing.Size(315, 117);
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "Lose!!";
             // 
@@ -51,7 +52,7 @@
             this.mainButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.mainButton.Font = new System.Drawing.Font("양재튼튼체B", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.mainButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.mainButton.Location = new System.Drawing.Point(677, 453);
+            this.mainButton.Location = new System.Drawing.Point(750, 569);
             this.mainButton.Name = "mainButton";
             this.mainButton.Size = new System.Drawing.Size(230, 70);
             this.mainButton.TabIndex = 2;
@@ -65,7 +66,7 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitButton.Font = new System.Drawing.Font("양재튼튼체B", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.exitButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.exitButton.Location = new System.Drawing.Point(677, 544);
+            this.exitButton.Location = new System.Drawing.Point(750, 645);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(230, 70);
             this.exitButton.TabIndex = 3;
@@ -73,12 +74,25 @@
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // rankLabel
+            // 
+            this.rankLabel.AutoSize = true;
+            this.rankLabel.BackColor = System.Drawing.Color.Transparent;
+            this.rankLabel.Font = new System.Drawing.Font("양재깨비체B", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.rankLabel.ForeColor = System.Drawing.Color.Snow;
+            this.rankLabel.Location = new System.Drawing.Point(418, 223);
+            this.rankLabel.Name = "rankLabel";
+            this.rankLabel.Size = new System.Drawing.Size(98, 50);
+            this.rankLabel.TabIndex = 4;
+            this.rankLabel.Text = "순위";
+            // 
             // LoseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::윈플텀프.Properties.Resources.BackGround;
             this.ClientSize = new System.Drawing.Size(992, 763);
+            this.Controls.Add(this.rankLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.mainButton);
             this.Controls.Add(this.titleLabel);
@@ -94,5 +108,6 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button mainButton;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Label rankLabel;
     }
 }

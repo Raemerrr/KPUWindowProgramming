@@ -22,6 +22,7 @@ namespace 윈플텀프
 
         public const int PLAYER_INIT_X = 30;
         public const int PLAYER_INIT_Y = 250;
+        public const int PLAYER_INIT_HP = 3;
         public const int PLAYER_SPEED = 15;
 
         public const int MAX_PATTERN = 10;

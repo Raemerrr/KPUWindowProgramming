@@ -12,7 +12,8 @@ namespace 윈플텀프
     class Missile 
     {
         List<List<string>> missileList = new List<List<string>>();
-        List<GameObject> objects = new List<GameObject>();
+        List<GameObject> Hobjects = new List<GameObject>();
+        List<GameObject> Wobjects = new List<GameObject>();
 
         public Missile()
         {
@@ -43,40 +44,46 @@ namespace 윈플텀프
 
         public void update(int msec)
         {
-            for (int i = objects.Count - 1; i >= 0; i--) {
-                GameObject o = objects[i];
+            for (int i = Hobjects.Count - 1; i >= 0; i--) {
+                GameObject o = Hobjects[i];
                 var bounds = o.bounds;
-                if (bounds.Bottom > 610) {
-                    objects.RemoveAt(i);
+                if (bounds.Bottom > Constants.SCREEN_HEIGHT) {
+                    Hobjects.RemoveAt(i);
                 }
             }
 
-            if (objects.Count <= 0)
+            for (int i = Wobjects.Count - 1; i >= 0; i--)
+            {
+                GameObject o = Wobjects[i];
+                var bounds = o.bounds;
+                if (bounds.Left > Constants.SCREEN_WIDTH)
+                {
+                    Wobjects.RemoveAt(i);
+                }
+            }
+
+            if (Hobjects.Count <= 0 && Wobjects.Count <= 0)
             {
                 appendObject();
             }
-            //else
-            //{
-            //    foreach (var obj in objects)
-            //    {
-            //        if (obj.bounds.Bottom > 610)
-            //        {
-            //            objects.Remove(obj);
-            //        }
-            //    }
-            //}
 
             int dy = Constants.MISSILE_SPEED * msec / 1000;
-            foreach (var obj in objects)
+            foreach (var obj in Hobjects)
             {
                 obj.move(0, dy);
+                obj.updateFrame(msec);
+            }
+            foreach (var obj in Wobjects)
+            {
+                obj.move(dy + 2, 0);
                 obj.updateFrame(msec);
             }
         }
 
         private void appendObject()
         {
-            int randomNum = new Random().Next(Constants.MAX_PATTERN);
+            Random r = new Random(DateTime.Now.Millisecond);
+            int randomNum = r.Next(Constants.MAX_PATTERN);
             for (int i = 0; i < missileList[randomNum].Count - 3; i += 3) 
             {
                 GameObject obj;
@@ -106,21 +113,55 @@ namespace 윈플텀프
                     obj.tag = Constants.TAG_CLEAR;
                 }
                 obj.setPosition(float.Parse(missileList[randomNum][i]), float.Parse(missileList[randomNum][i + 1]));
-                objects.Add(obj);
+                Hobjects.Add(obj);
+            }
+            Random r2 = new Random(DateTime.Now.Millisecond);
+            int randomNum2 = r2.Next(Constants.MAX_PATTERN);
+            for (int i = 0; i < missileList[randomNum2].Count - 3; i += 3)
+            {
+                GameObject obj;
+                if (missileList[randomNum2][i + 2] == Constants.TAG_RED.ToString())
+                {
+                    obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
+                    obj.tag = Constants.TAG_RED;
+                }
+                else if (missileList[randomNum2][i + 2] == Constants.TAG_BLUE.ToString())
+                {
+                    obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
+                    obj.tag = Constants.TAG_BLUE;
+                }
+                else if (missileList[randomNum2][i + 2] == Constants.TAG_GREEN.ToString())
+                {
+                    obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
+                    obj.tag = Constants.TAG_GREEN;
+                }
+                else if (missileList[randomNum2][i + 2] == Constants.TAG_HP.ToString())
+                {
+                    obj = new GameObject(윈플텀프.Properties.Resources.cHpObject);
+                    obj.tag = Constants.TAG_HP;
+                }
+                else
+                {
+                    obj = new GameObject(윈플텀프.Properties.Resources.cClearObject);
+                    obj.tag = Constants.TAG_CLEAR;
+                }
+                obj.setPosition(float.Parse(missileList[randomNum2][i + 1]) - 100, float.Parse(missileList[randomNum2][i]));
+                Wobjects.Add(obj);
             }
         }
 
         public int checkCollision(Player player)
         {
             //GameObject removedCoin = null;
-            foreach (GameObject obj in objects)
+            foreach (GameObject obj in Hobjects)
             {
                 if (obj.tag == Constants.TAG_RED)
                 {
                     if (obj.collides(player))
                     {
                         //removedCoin = obj;
-                        objects.Remove(obj);
+                        Hobjects.Remove(obj);
+                        player.playerHp -= 1;
                         return Constants.TAG_RED;
                     }
                 }
@@ -128,27 +169,107 @@ namespace 윈플텀프
                 {
                     if (obj.collides(player))
                     {
-                        objects.Remove(obj);
+                        player.playerHp -= 1;
+                        Hobjects.Remove(obj);
                         return Constants.TAG_BLUE;
+                    }
+                }
+                else if (obj.tag == Constants.TAG_GREEN)
+                {
+                    if (obj.collides(player))
+                    {
+                        player.playerHp -= 1;
+                        Hobjects.Remove(obj);
+                        return Constants.TAG_GREEN;
+                    }
+                }
+                else if (obj.tag == Constants.TAG_HP)
+                {
+                    if (obj.collides(player))
+                    {
+                        player.playerHp += 1;
+                        Hobjects.Remove(obj);
+                        return Constants.TAG_HP;
+                    }
+                }
+                else if (obj.tag == Constants.TAG_CLEAR)
+                {
+                    if (obj.collides(player))
+                    {
+                        Hobjects.Clear();
+                        Wobjects.Clear();
+                        return Constants.TAG_CLEAR;
                     }
                 }
                 else
                 {
+                    return Constants.TAG_NOTHING;
+                }
+            }
+            foreach (GameObject obj in Wobjects)
+            {
+                if (obj.tag == Constants.TAG_RED)
+                {
                     if (obj.collides(player))
                     {
+                        //removedCoin = obj;
+                        Wobjects.Remove(obj);
+                        player.playerHp -= 1;
+                        return Constants.TAG_RED;
+                    }
+                }
+                else if (obj.tag == Constants.TAG_BLUE)
+                {
+                    if (obj.collides(player))
+                    {
+                        player.playerHp -= 1;
+                        Wobjects.Remove(obj);
+                        return Constants.TAG_BLUE;
+                    }
+                }
+                else if (obj.tag == Constants.TAG_GREEN)
+                {
+                    if (obj.collides(player))
+                    {
+                        player.playerHp -= 1;
+                        Wobjects.Remove(obj);
                         return Constants.TAG_GREEN;
                     }
                 }
+                else if (obj.tag == Constants.TAG_HP)
+                {
+                    if (obj.collides(player))
+                    {
+                        player.playerHp += 1;
+                        Wobjects.Remove(obj);
+                        return Constants.TAG_HP;
+                    }
+                }
+                else if (obj.tag == Constants.TAG_CLEAR)
+                {
+                    if (obj.collides(player))
+                    {
+                        Wobjects.Clear();
+                        Hobjects.Clear();
+                        //Hobjects.Remove(obj);
+                        return Constants.TAG_CLEAR;
+                    }
+                }
+                else
+                {
+                    return Constants.TAG_NOTHING;
+                }
             }
             return Constants.TAG_NOTHING;
-            //if (removedCoin != null) {
-            //    //playSOUnd();
-            //}
         }
 
         public void draw(Graphics g)
         {
-            foreach (var obj in objects)
+            foreach (var obj in Hobjects)
+            {
+                obj.draw(g);
+            }
+            foreach (var obj in Wobjects)
             {
                 obj.draw(g);
             }
