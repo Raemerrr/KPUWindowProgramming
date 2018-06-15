@@ -16,7 +16,7 @@ namespace 윈플텀프
         int hp;
         public int playerColor = 0;
        
-        public Player() : base(윈플텀프.Properties.Resources.Player, 3, 0.0f)
+        public Player() : base(윈플텀프.Properties.Resources.Player2, 4, 0.0f)
         {
             hp = Constants.PLAYER_INIT_HP;
             //hpMark = new GameObject(윈플텀프.Properties.Resources.HpMark);
@@ -86,13 +86,17 @@ namespace 윈플텀프
             //플레이어 색 입력
             if (keyCode.KeyCode == Keys.Q)
             {
-                playerColor = 0;
+                playerColor = Constants.TAG_RED;
             }else if (keyCode.KeyCode == Keys.W)
             {
-                playerColor = 1;
+                playerColor = Constants.TAG_BLUE;
             }else if (keyCode.KeyCode == Keys.E)
             {
-                playerColor = 2;
+                playerColor = Constants.TAG_GREEN;
+            }
+            else if (keyCode.KeyCode == Keys.R)
+            {
+                playerColor = Constants.PLAYER_INVINCIBILITY;
             }
         }
 

@@ -147,26 +147,26 @@ namespace 윈플텀프
             if (GameForm.gameRound >= 3)
             {
                 Random r = new Random(DateTime.Now.Millisecond);
-                int randomNum2 = r.Next(Constants.MAX_PATTERN);
-                for (int i = 0; i < missileList[randomNum2].Count - 3; i += 3)
+                int randomNum = r.Next(Constants.MAX_PATTERN);
+                for (int i = 0; i < missileList[randomNum].Count - 3; i += 3)
                 {
                     GameObject obj;
-                    if (missileList[randomNum2][i + 2] == Constants.TAG_RED.ToString())
+                    if (missileList[randomNum][i + 2] == Constants.TAG_RED.ToString())
                     {
                         obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
                         obj.tag = Constants.TAG_RED;
                     }
-                    else if (missileList[randomNum2][i + 2] == Constants.TAG_BLUE.ToString())
+                    else if (missileList[randomNum][i + 2] == Constants.TAG_BLUE.ToString())
                     {
                         obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
                         obj.tag = Constants.TAG_BLUE;
                     }
-                    else if (missileList[randomNum2][i + 2] == Constants.TAG_GREEN.ToString())
+                    else if (missileList[randomNum][i + 2] == Constants.TAG_GREEN.ToString())
                     {
                         obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
                         obj.tag = Constants.TAG_GREEN;
                     }
-                    else if (missileList[randomNum2][i + 2] == Constants.TAG_HP.ToString())
+                    else if (missileList[randomNum][i + 2] == Constants.TAG_HP.ToString())
                     {
                         obj = new GameObject(윈플텀프.Properties.Resources.cHpObject);
                         obj.tag = Constants.TAG_HP;
@@ -176,33 +176,33 @@ namespace 윈플텀프
                         obj = new GameObject(윈플텀프.Properties.Resources.cClearObject);
                         obj.tag = Constants.TAG_CLEAR;
                     }
-                    obj.setPosition(float.Parse(missileList[randomNum2][i + 1]) - 100, float.Parse(missileList[randomNum2][i]));
+                    obj.setPosition(float.Parse(missileList[randomNum][i + 1]) - 100, float.Parse(missileList[randomNum][i]));
                     Wobjects.Add(obj);
                 }
             }
             if (GameForm.gameRound >= 6)
             {
                 Random r = new Random(DateTime.Now.Millisecond);
-                int randomNum2 = r.Next(Constants.MAX_PATTERN);
-                for (int i = 0; i < missileList[randomNum2].Count - 3; i += 3)
+                int randomNum = r.Next(Constants.MAX_PATTERN);
+                for (int i = 0; i < missileList[randomNum].Count - 3; i += 3)
                 {
                     GameObject obj;
-                    if (missileList[randomNum2][i + 2] == Constants.TAG_RED.ToString())
+                    if (missileList[randomNum][i + 2] == Constants.TAG_RED.ToString())
                     {
                         obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
                         obj.tag = Constants.TAG_RED;
                     }
-                    else if (missileList[randomNum2][i + 2] == Constants.TAG_BLUE.ToString())
+                    else if (missileList[randomNum][i + 2] == Constants.TAG_BLUE.ToString())
                     {
                         obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
                         obj.tag = Constants.TAG_BLUE;
                     }
-                    else if (missileList[randomNum2][i + 2] == Constants.TAG_GREEN.ToString())
+                    else if (missileList[randomNum][i + 2] == Constants.TAG_GREEN.ToString())
                     {
                         obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
                         obj.tag = Constants.TAG_GREEN;
                     }
-                    else if (missileList[randomNum2][i + 2] == Constants.TAG_HP.ToString())
+                    else if (missileList[randomNum][i + 2] == Constants.TAG_HP.ToString())
                     {
                         obj = new GameObject(윈플텀프.Properties.Resources.cHpObject);
                         obj.tag = Constants.TAG_HP;
@@ -212,7 +212,7 @@ namespace 윈플텀프
                         obj = new GameObject(윈플텀프.Properties.Resources.cClearObject);
                         obj.tag = Constants.TAG_CLEAR;
                     }
-                    obj.setPosition(float.Parse(missileList[randomNum2][i + 1]) + ((Constants.SCREEN_WIDTH * 2) + 10), float.Parse(missileList[randomNum2][i]));
+                    obj.setPosition(float.Parse(missileList[randomNum][i + 1]) + ((Constants.SCREEN_WIDTH * 2) + 10), float.Parse(missileList[randomNum][i]));
                     _Wobjects.Add(obj);
                 }
             }

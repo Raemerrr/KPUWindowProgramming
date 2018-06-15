@@ -81,21 +81,21 @@ namespace 윈플텀프
             {
                 score += Constants.ADD_SCORE_NONE;
             }
-            else if (tag == Constants.TAG_BLUE && player.playerColor != Constants.TAG_BLUE)
+            else if (tag == Constants.TAG_BLUE && player.playerColor != Constants.TAG_BLUE && player.playerColor != Constants.PLAYER_INVINCIBILITY)
             {
                 if (hpMarkList.Count > 0)
                 {
                     hpMarkList.RemoveAt(hpMarkList.Count - 1);
                 }
             }
-            else if (tag == Constants.TAG_RED && player.playerColor != Constants.TAG_RED)
+            else if (tag == Constants.TAG_RED && player.playerColor != Constants.TAG_RED && player.playerColor != Constants.PLAYER_INVINCIBILITY)
             {
                 if (hpMarkList.Count > 0)
                 {
                     hpMarkList.RemoveAt(hpMarkList.Count - 1);
                 }
             }
-            else if (tag == Constants.TAG_GREEN && player.playerColor != Constants.TAG_GREEN)
+            else if (tag == Constants.TAG_GREEN && player.playerColor != Constants.TAG_GREEN && player.playerColor != Constants.PLAYER_INVINCIBILITY)
             {
                 if (hpMarkList.Count > 0)
                 {
