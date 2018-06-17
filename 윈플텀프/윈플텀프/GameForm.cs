@@ -123,16 +123,16 @@ namespace 윈플텀프
             if (gameRound >= Constants.MAX_GAME_ROUND)
             {
                 winCheck = true;
-                GameFore_EndSet();
+                GameForm_EndSetting();
             }
             //게임 실패 조건
             if (hpMarkList.Count <= 0)
             {
                 winCheck = false;
-                GameFore_EndSet();
+                GameForm_EndSetting();
             }
         }
-        private void GameFore_EndSet()
+        private void GameForm_EndSetting()
         {
             timer.Enabled = false;
             timer.Dispose();
@@ -169,8 +169,9 @@ namespace 윈플텀프
 
         private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
             player.isMoving = false;
+            this.Dispose();
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

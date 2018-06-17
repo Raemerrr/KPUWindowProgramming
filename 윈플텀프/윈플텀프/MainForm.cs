@@ -58,6 +58,7 @@ namespace 윈플텀프
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.Dispose();
             System.Windows.Forms.Application.Exit();
         }
 

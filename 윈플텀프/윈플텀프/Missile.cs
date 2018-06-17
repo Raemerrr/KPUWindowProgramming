@@ -25,13 +25,16 @@ namespace 윈플텀프
         {
             try
             {
-                for (int q = 0; q < 10; q++)
+                string[] pattern = Directory.GetFiles("./Resources/Pattern", "*.txt");
+                foreach (string item in pattern)
+                {
+                    System.Diagnostics.Debug.WriteLine(item);
+                }
+                for (int i = 0; i < Constants.MAX_PATTERN; i++)
                 {
                     List<string> ls = new List<string>();
-                    string fileName = "Pattern";
-                    fileName += q + ".txt";
-                    StreamReader sr = new StreamReader("./Resources/Pattern/" + fileName);
-                    while (sr.Peek() > -1)
+                    StreamReader sr = new StreamReader(pattern[i]);
+                    while (!sr.EndOfStream)
                     {
                         string inputWord = sr.ReadLine();
                         string[] temp = inputWord.Split('\t');
@@ -88,20 +91,20 @@ namespace 윈플텀프
                 appendObject();
             }
 
-            int dy = Constants.MISSILE_SPEED * msec / 1000;
+            int speed = Constants.MISSILE_SPEED * msec / 1000;
             foreach (var obj in Hobjects)
             {
-                obj.move(0, dy);
+                obj.move(0, speed);
                 obj.updateFrame(msec);
             }
             foreach (var obj in Wobjects)
             {
-                obj.move(dy + 2, 0);
+                obj.move((speed + 2), 0);
                 obj.updateFrame(msec);
             }
             foreach (var obj in _Wobjects)
             {
-                obj.move(-(dy + 2), 0);
+                obj.move(-(speed + 2), 0);
                 obj.updateFrame(msec);
             }
         }
@@ -146,7 +149,7 @@ namespace 윈플텀프
             }
             if (GameForm.gameRound >= 3)
             {
-                Random r = new Random(DateTime.Now.Millisecond);
+                Random r = new Random(DateTime.Now.Millisecond * 2);
                 int randomNum = r.Next(Constants.MAX_PATTERN);
                 for (int i = 0; i < missileList[randomNum].Count - 3; i += 3)
                 {
@@ -182,7 +185,7 @@ namespace 윈플텀프
             }
             if (GameForm.gameRound >= 6)
             {
-                Random r = new Random(DateTime.Now.Millisecond);
+                Random r = new Random(DateTime.Now.Millisecond * 3);
                 int randomNum = r.Next(Constants.MAX_PATTERN);
                 for (int i = 0; i < missileList[randomNum].Count - 3; i += 3)
                 {
@@ -335,9 +338,8 @@ namespace 윈플텀프
                 {
                     if (obj.collides(player))
                     {
-                        //removedCoin = obj;
-                        _Wobjects.Remove(obj);
                         player.playerHp -= 1;
+                        _Wobjects.Remove(obj);
                         return Constants.TAG_RED;
                     }
                 }

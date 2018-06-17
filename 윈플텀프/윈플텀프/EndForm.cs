@@ -34,7 +34,6 @@ namespace 윈플텀프
             {
                 Label rank = new Label();
                 rank.Name = "rankLabel" + i.ToString();
-                //rank.Size = new Size(500,50);
                 rank.AutoSize = true;
                 rank.Location = new Point(336, 313 + (i * 50));
                 rank.Text = MainForm.playerRecord[i];
@@ -47,12 +46,14 @@ namespace 윈플텀프
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            this.Dispose();
             Application.Exit();
         }
 
         private void mainButton_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            this.Dispose();
             MainForm mainForm = new MainForm();
             mainForm.Show();
         }

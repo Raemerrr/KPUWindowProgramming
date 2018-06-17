@@ -11,7 +11,7 @@ namespace 윈플텀프
     class Player : AnimObject
     {
         enum Direction { Right, Left, Up, Down };
-        bool[] inputCheck = new bool[4] { false, false, false, false };
+        bool[] inputCheck = new bool[Constants.PLAYER_DIRECTION] { false, false, false, false };
         public bool isMoving = false;
         int hp;
         public int playerColor = 0;
@@ -19,7 +19,6 @@ namespace 윈플텀프
         public Player() : base(윈플텀프.Properties.Resources.Player2, 4, 0.0f)
         {
             hp = Constants.PLAYER_INIT_HP;
-            //hpMark = new GameObject(윈플텀프.Properties.Resources.HpMark);
             setPosition(Constants.PLAYER_INIT_X, Constants.PLAYER_INIT_Y);
         }
 
@@ -94,7 +93,7 @@ namespace 윈플텀프
             {
                 playerColor = Constants.TAG_GREEN;
             }
-            else if (keyCode.KeyCode == Keys.R)
+            else if (keyCode.KeyCode == Keys.Z)
             {
                 playerColor = Constants.PLAYER_INVINCIBILITY;
             }

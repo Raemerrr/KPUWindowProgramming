@@ -21,12 +21,15 @@ namespace 윈플텀프
         public const int MISSILE_SPEED = 220;
         public const int MAX_PATTERN = 10;
         public const int MAX_GAME_ROUND = 10;
-        public const int PLAYER_INVINCIBILITY = 3;
+        public const int MAX_GAME_RECORD = 3;
 
         public const int PLAYER_INIT_X = 30;
         public const int PLAYER_INIT_Y = 250;
         public const int PLAYER_INIT_HP = 3;
         public const int PLAYER_SPEED = 15;
+        public const int PLAYER_INVINCIBILITY = 3;
+        public const int PLAYER_DIRECTION = 4;
+
 
         public const int ADD_SCORE_NONE = 20;
         public const int ADD_SCORE_CLEAR = 30;

@@ -34,7 +34,7 @@ namespace 윈플텀프
             GameForm.recordName = playerNameTextBox.Text;
             this.Visible = false;
             this.Dispose();
-            if (GameForm.playerRankIndex < 3)
+            if (GameForm.playerRankIndex < Constants.MAX_GAME_RECORD)
             {
                 MainForm.playerRecord.Insert(GameForm.playerRankIndex, (GameForm.recordName + "- " + GameForm.score.ToString()));
                 MainForm.playerRecord.RemoveAt(MainForm.playerRecord.Count - 1);
