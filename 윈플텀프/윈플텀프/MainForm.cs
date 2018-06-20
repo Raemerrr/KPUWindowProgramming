@@ -24,9 +24,10 @@ namespace 윈플텀프
         }
         private void InitRecord()
         {
+            string filePath = "./Resources/Record.txt";
             try
             {
-                StreamReader sr = new StreamReader("./Resources/Record.txt");
+                StreamReader sr = new StreamReader(filePath);
                 while (sr.Peek() > -1)
                 {
                     string inputWord = sr.ReadLine();
@@ -35,9 +36,13 @@ namespace 윈플텀프
                     playerRecordScore.Add(Int32.Parse(temp[1]));
                 }
                 sr.Close();
+                //MessageBox.Show("playerRecord Size : " + playerRecord.Count.ToString());
+
             }
             catch (Exception e)
             {
+                MessageBox.Show("파일생성");
+                File.Create(filePath);
                 MessageBox.Show(e.Message, "Error");
             }
         }

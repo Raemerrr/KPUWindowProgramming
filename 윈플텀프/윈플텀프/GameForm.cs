@@ -60,7 +60,6 @@ namespace 윈플텀프
 
         bool active = false;
         DateTime previousTime;
-        bool recordFlag = false;
         private void timer_Tick(object sender, EventArgs e)
         {
             score++;
@@ -136,26 +135,34 @@ namespace 윈플텀프
         {
             timer.Enabled = false;
             timer.Dispose();
-            for (int i = 0; i < MainForm.playerRecordScore.Count; i++)
-            {
-                if (score > MainForm.playerRecordScore[i])
-                {
-                    this.Dispose();
-                    this.Visible = false;
-                    InputRecordForm inputForm = new InputRecordForm();
-                    inputForm.Show();
-                    playerRankIndex = i;
-                    recordFlag = true;
-                    return;
-                }
-            }
-            if (!recordFlag)
+
+            if (MainForm.playerRecordScore.Count == 0)
             {
                 this.Dispose();
                 this.Visible = false;
-                EndForm endForm = new EndForm();
-                endForm.Show();
+                InputRecordForm inputForm = new InputRecordForm();
+                inputForm.Show();
+                return;
             }
+            else
+            {
+                for (int i = 0; i < MainForm.playerRecordScore.Count; i++)
+                {
+                    if (score > MainForm.playerRecordScore[i])
+                    {
+                        this.Dispose();
+                        this.Visible = false;
+                        playerRankIndex = i;
+                        InputRecordForm inputForm = new InputRecordForm();
+                        inputForm.Show();
+                        return;
+                    }
+                }
+            }
+            this.Dispose();
+            this.Visible = false;
+            EndForm endForm = new EndForm();
+            endForm.Show();
         }
         private void GameForm_KeyUp(object sender, KeyEventArgs e)
         {

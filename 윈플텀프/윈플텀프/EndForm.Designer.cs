@@ -97,7 +97,7 @@
             this.Controls.Add(this.mainButton);
             this.Controls.Add(this.titleLabel);
             this.Name = "EndForm";
-            this.Text = "LoseForm";
+            this.Text = "EndForm";
             this.Load += new System.EventHandler(this.EndForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EndForm_Paint);
             this.ResumeLayout(false);

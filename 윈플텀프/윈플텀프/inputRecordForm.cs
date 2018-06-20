@@ -15,13 +15,13 @@ namespace 윈플텀프
         Bitmap bgImage;
         private void iputRecordForm_Load(object sender, EventArgs e)
         {
-            this.ClientSize = new Size(Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/2);
+            this.ClientSize = new Size(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2);
             bgImage = 윈플텀프.Properties.Resources.BackGround;
         }
 
         private void iputRecordForm_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(bgImage, 0, 0, Constants.SCREEN_WIDTH/2, Constants.SCREEN_HEIGHT/2);
+            e.Graphics.DrawImage(bgImage, 0, 0, Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2);
         }
 
         private void iputRecordForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -37,8 +37,12 @@ namespace 윈플텀프
             if (GameForm.playerRankIndex < Constants.MAX_GAME_RECORD)
             {
                 MainForm.playerRecord.Insert(GameForm.playerRankIndex, (GameForm.recordName + "- " + GameForm.score.ToString()));
-                MainForm.playerRecord.RemoveAt(MainForm.playerRecord.Count - 1);
+                if (MainForm.playerRecord.Count > 3)
+                {
+                    MainForm.playerRecord.RemoveAt(MainForm.playerRecord.Count - 1);
+                }
             }
+
             try
             {
                 StreamWriter sw = new StreamWriter("./Resources/Record.txt");
@@ -53,8 +57,8 @@ namespace 윈플텀프
             {
                 MessageBox.Show(ex.Message, "Error");
             }
-            EndForm loseForm = new EndForm();
-            loseForm.Show();
+            EndForm EndForm = new EndForm();
+            EndForm.Show();
         }
     }
 }
