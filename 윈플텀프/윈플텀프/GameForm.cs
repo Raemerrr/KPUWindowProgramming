@@ -177,8 +177,8 @@ namespace 윈플텀프
         private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             player.isMoving = false;
-            this.Dispose();
-            System.Windows.Forms.Application.Exit();
+            Dispose();
+            Application.Exit();
         }
     }
 }
