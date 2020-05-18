@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,38 +28,24 @@ namespace KPUWindowProgramming
         {
             try
             {
-                List<string> pattern = new List<string>();
-                //string[] pattern = Directory.GetFiles("./Resources/Pattern", "*.txt");
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern0);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern1);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern2);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern3);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern4);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern5);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern6);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern7);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern8);
-                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern9);
-                foreach (string item in pattern)
+                List<string> pattern = new List<string>() { "Pattern0", "Pattern1", "Pattern2", "Pattern3", "Pattern4", "Pattern5", "Pattern6", "Pattern7", "Pattern8", "Pattern9" };
+                //조금이나마 지저분한 부분을 수정했으나, 리소스 파일들이 늘어날 경우 리소스의 모든 것을 탐색하기엔 무리가 있다.
+                ResourceSet resourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+                foreach (DictionaryEntry entry in resourceSet)
                 {
-                    System.Diagnostics.Debug.WriteLine(item);
-                }
-                for (int i = 0; i < Constants.MAX_PATTERN; i++)
-                {
-                    List<string> ls = new List<string>();
-                    using (var reader = new StringReader(pattern[i]))
+                    string resourceKey = entry.Key.ToString();
+                    if (pattern.Contains(resourceKey))
                     {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
+                        List<string> ls = new List<string>();
+                        object resource = entry.Value;
+                        string line = resource.ToString().Replace("\r\n", "\t");
+                        string[] temp = line.Split('\t');
+                        foreach (var item in temp)
                         {
-                            string[] temp = line.Split('\t');
-                            foreach (var item in temp)
-                            {
-                                ls.Add(item);
-                            }
+                            ls.Add(item);
                         }
+                        missileList.Add(ls);
                     }
-                    missileList.Add(ls);
                 }
             }
             catch (Exception e)
