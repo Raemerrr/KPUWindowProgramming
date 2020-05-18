@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 윈플텀프
+namespace KPUWindowProgramming
 {
     class GameObject
     {

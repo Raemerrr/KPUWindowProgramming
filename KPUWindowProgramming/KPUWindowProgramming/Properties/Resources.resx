@@ -145,4 +145,34 @@
   <data name="Player2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Player2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Pattern0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern0.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern7.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern8.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
+  <data name="Pattern9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern\Pattern9.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;ks_c_5601-1987</value>
+  </data>
 </root>

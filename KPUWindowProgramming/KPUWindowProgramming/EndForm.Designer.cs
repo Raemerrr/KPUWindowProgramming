@@ -1,4 +1,4 @@
-﻿namespace 윈플텀프
+﻿namespace KPUWindowProgramming
 {
     partial class EndForm
     {

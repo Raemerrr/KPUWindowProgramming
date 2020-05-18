@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace 윈플텀프
+namespace KPUWindowProgramming
 {
     public partial class GameForm : Form
     {
@@ -25,14 +25,14 @@ namespace 윈플텀프
         private void GameForm_Load(object sender, EventArgs e)
         {
             this.ClientSize = new Size(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-            bgImage = 윈플텀프.Properties.Resources.BackGround;
+            bgImage = KPUWindowProgramming.Properties.Resources.BackGround;
             missile = new Missile();
             player = new Player();
             previousTime = DateTime.Now;
 
             for (int i = 0; i < Constants.PLAYER_INIT_HP; i++)
             {
-                GameObject hpMark = new GameObject(윈플텀프.Properties.Resources.HpMark);
+                GameObject hpMark = new GameObject(KPUWindowProgramming.Properties.Resources.HpMark);
                 hpMark.setPosition(i * 55, i);
                 hpMarkList.Add(hpMark);
             }
@@ -106,7 +106,7 @@ namespace 윈플텀프
                 score += Constants.ADD_SCORE_HP;
                 if (hpMarkList.Count < Constants.PLAYER_INIT_HP)
                 {
-                    GameObject hpMark = new GameObject(윈플텀프.Properties.Resources.HpMark);
+                    GameObject hpMark = new GameObject(KPUWindowProgramming.Properties.Resources.HpMark);
                     hpMark.setPosition(hpMarkList.Count * 55, 0);
                     hpMarkList.Add(hpMark);
                 }

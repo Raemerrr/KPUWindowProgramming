@@ -3,7 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace 윈플텀프
+namespace KPUWindowProgramming
 {
     public partial class InputRecordForm : Form
     {
@@ -16,7 +16,7 @@ namespace 윈플텀프
         private void iputRecordForm_Load(object sender, EventArgs e)
         {
             this.ClientSize = new Size(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2);
-            bgImage = 윈플텀프.Properties.Resources.BackGround;
+            bgImage = KPUWindowProgramming.Properties.Resources.BackGround;
         }
 
         private void iputRecordForm_Paint(object sender, PaintEventArgs e)

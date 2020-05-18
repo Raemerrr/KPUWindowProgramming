@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 윈플텀프
+namespace KPUWindowProgramming
 {
     class Player : AnimObject
     {
@@ -16,7 +16,7 @@ namespace 윈플텀프
         int hp;
         public int playerColor = 0;
        
-        public Player() : base(윈플텀프.Properties.Resources.Player2, 4, 0.0f)
+        public Player() : base(KPUWindowProgramming.Properties.Resources.Player2, 4, 0.0f)
         {
             hp = Constants.PLAYER_INIT_HP;
             setPosition(Constants.PLAYER_INIT_X, Constants.PLAYER_INIT_Y);
@@ -45,19 +45,19 @@ namespace 윈플텀프
 
         public void handleKeyUpEvent(KeyEventArgs keyCode)
         {
-            if (keyCode.KeyCode == Keys.Right)
+            if (keyCode.KeyCode == Keys.Right || keyCode.KeyCode == Keys.L)
             {
                 inputCheck[Convert.ToInt32(Direction.Right)] = false;
             }
-            if (keyCode.KeyCode == Keys.Left)
+            if (keyCode.KeyCode == Keys.Left || keyCode.KeyCode == Keys.J)
             {
                 inputCheck[Convert.ToInt32(Direction.Left)] = false;
             }
-            if (keyCode.KeyCode == Keys.Up)
+            if (keyCode.KeyCode == Keys.Up || keyCode.KeyCode == Keys.I)
             {
                 inputCheck[Convert.ToInt32(Direction.Up)] = false;
             }
-            if (keyCode.KeyCode == Keys.Down)
+            if (keyCode.KeyCode == Keys.Down || keyCode.KeyCode == Keys.K)
             {
                 inputCheck[Convert.ToInt32(Direction.Down)] = false;
             }
@@ -65,19 +65,19 @@ namespace 윈플텀프
 
         public void handleKeyDownEvent(KeyEventArgs keyCode)
         {
-            if (keyCode.KeyCode == Keys.Right)
+            if (keyCode.KeyCode == Keys.Right || keyCode.KeyCode == Keys.L)
             {
                 inputCheck[Convert.ToInt32(Direction.Right)] = true;
             }
-            if (keyCode.KeyCode == Keys.Left)
+            if (keyCode.KeyCode == Keys.Left || keyCode.KeyCode == Keys.J)
             {
                 inputCheck[Convert.ToInt32(Direction.Left)] = true;
             }
-            if (keyCode.KeyCode == Keys.Up)
+            if (keyCode.KeyCode == Keys.Up || keyCode.KeyCode == Keys.I)
             {
                 inputCheck[Convert.ToInt32(Direction.Up)] = true;
             }
-            if (keyCode.KeyCode == Keys.Down)
+            if (keyCode.KeyCode == Keys.Down || keyCode.KeyCode == Keys.K)
             {
                 inputCheck[Convert.ToInt32(Direction.Down)] = true;
             }

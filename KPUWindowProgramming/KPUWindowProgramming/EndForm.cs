@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 윈플텀프
+namespace KPUWindowProgramming
 {
     public partial class EndForm : Form
     {
@@ -61,7 +61,7 @@ namespace 윈플텀프
         private void EndForm_Load(object sender, EventArgs e)
         {
             this.ClientSize = new Size(Constants.SCREEN_WIDTH - 200, Constants.SCREEN_HEIGHT);
-            bgImage = 윈플텀프.Properties.Resources.BackGround;
+            bgImage = KPUWindowProgramming.Properties.Resources.BackGround;
 
         }
 

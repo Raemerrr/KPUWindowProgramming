@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 윈플텀프
+namespace KPUWindowProgramming
 {
     class AnimObject : GameObject
     {

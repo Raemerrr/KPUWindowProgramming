@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace 윈플텀프
+namespace KPUWindowProgramming
 {
     class Missile
     {
@@ -25,7 +25,18 @@ namespace 윈플텀프
         {
             try
             {
-                string[] pattern = Directory.GetFiles("./Resources/Pattern", "*.txt");
+                List<string> pattern = new List<string>();
+                //string[] pattern = Directory.GetFiles("./Resources/Pattern", "*.txt");
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern0);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern1);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern2);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern3);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern4);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern5);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern6);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern7);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern8);
+                pattern.Add(KPUWindowProgramming.Properties.Resources.Pattern9);
                 foreach (string item in pattern)
                 {
                     System.Diagnostics.Debug.WriteLine(item);
@@ -33,18 +44,19 @@ namespace 윈플텀프
                 for (int i = 0; i < Constants.MAX_PATTERN; i++)
                 {
                     List<string> ls = new List<string>();
-                    StreamReader sr = new StreamReader(pattern[i]);
-                    while (!sr.EndOfStream)
+                    using (var reader = new StringReader(pattern[i]))
                     {
-                        string inputWord = sr.ReadLine();
-                        string[] temp = inputWord.Split('\t');
-                        foreach (var item in temp)
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
                         {
-                            ls.Add(item);
+                            string[] temp = line.Split('\t');
+                            foreach (var item in temp)
+                            {
+                                ls.Add(item);
+                            }
                         }
                     }
                     missileList.Add(ls);
-                    sr.Close();
                 }
             }
             catch (Exception e)
@@ -120,27 +132,27 @@ namespace 윈플텀프
                     GameObject obj;
                     if (missileList[randomNum][i + 2] == Constants.TAG_RED.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.RedObject, 3, 4.0f);
                         obj.tag = Constants.TAG_RED;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_BLUE.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.BlueObject, 3, 4.0f);
                         obj.tag = Constants.TAG_BLUE;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_GREEN.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.GreenObject, 3, 4.0f);
                         obj.tag = Constants.TAG_GREEN;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_HP.ToString())
                     {
-                        obj = new GameObject(윈플텀프.Properties.Resources.cHpObject);
+                        obj = new GameObject(KPUWindowProgramming.Properties.Resources.cHpObject);
                         obj.tag = Constants.TAG_HP;
                     }
                     else
                     {
-                        obj = new GameObject(윈플텀프.Properties.Resources.cClearObject);
+                        obj = new GameObject(KPUWindowProgramming.Properties.Resources.cClearObject);
                         obj.tag = Constants.TAG_CLEAR;
                     }
                     obj.setPosition(float.Parse(missileList[randomNum][i]), float.Parse(missileList[randomNum][i + 1]));
@@ -156,27 +168,27 @@ namespace 윈플텀프
                     GameObject obj;
                     if (missileList[randomNum][i + 2] == Constants.TAG_RED.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.RedObject, 3, 4.0f);
                         obj.tag = Constants.TAG_RED;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_BLUE.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.BlueObject, 3, 4.0f);
                         obj.tag = Constants.TAG_BLUE;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_GREEN.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.GreenObject, 3, 4.0f);
                         obj.tag = Constants.TAG_GREEN;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_HP.ToString())
                     {
-                        obj = new GameObject(윈플텀프.Properties.Resources.cHpObject);
+                        obj = new GameObject(KPUWindowProgramming.Properties.Resources.cHpObject);
                         obj.tag = Constants.TAG_HP;
                     }
                     else
                     {
-                        obj = new GameObject(윈플텀프.Properties.Resources.cClearObject);
+                        obj = new GameObject(KPUWindowProgramming.Properties.Resources.cClearObject);
                         obj.tag = Constants.TAG_CLEAR;
                     }
                     obj.setPosition(float.Parse(missileList[randomNum][i + 1]) - 100, float.Parse(missileList[randomNum][i]));
@@ -192,27 +204,27 @@ namespace 윈플텀프
                     GameObject obj;
                     if (missileList[randomNum][i + 2] == Constants.TAG_RED.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.RedObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.RedObject, 3, 4.0f);
                         obj.tag = Constants.TAG_RED;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_BLUE.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.BlueObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.BlueObject, 3, 4.0f);
                         obj.tag = Constants.TAG_BLUE;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_GREEN.ToString())
                     {
-                        obj = new AnimObject(윈플텀프.Properties.Resources.GreenObject, 3, 4.0f);
+                        obj = new AnimObject(KPUWindowProgramming.Properties.Resources.GreenObject, 3, 4.0f);
                         obj.tag = Constants.TAG_GREEN;
                     }
                     else if (missileList[randomNum][i + 2] == Constants.TAG_HP.ToString())
                     {
-                        obj = new GameObject(윈플텀프.Properties.Resources.cHpObject);
+                        obj = new GameObject(KPUWindowProgramming.Properties.Resources.cHpObject);
                         obj.tag = Constants.TAG_HP;
                     }
                     else
                     {
-                        obj = new GameObject(윈플텀프.Properties.Resources.cClearObject);
+                        obj = new GameObject(KPUWindowProgramming.Properties.Resources.cClearObject);
                         obj.tag = Constants.TAG_CLEAR;
                     }
                     obj.setPosition(float.Parse(missileList[randomNum][i + 1]) + ((Constants.SCREEN_WIDTH * 2) + 10), float.Parse(missileList[randomNum][i]));
